@@ -1,0 +1,50 @@
+{
+  "name": "evocord",
+  "version": "1.0.0",
+  "description": "A modular discord API wrapper",
+  "main": "dist/bundle.js",
+  "jest": {
+    "roots": [
+      "<rootDir>/tests"
+    ],
+    "preset": "ts-jest",
+    "testEnvironment": "node"
+  },
+  "scripts": {
+    "test": "cross-env NODE_ENV=test jest",
+    "test:ts": "tsc",
+    "build": "npx tsc --project tsconfig.json && tscpaths -p tsconfig.json -s ./src -o ./dist",
+    "debug": "npm run build && cross-env BOT_ENV=debug node test/index.js",
+    "format": "npx prettier \"src/**/*.{js,ts}\" --write"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThatAnonyG/NodeBoilerplate.git"
+  },
+  "author": "ThatAnonyG",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ThatAnonyG/NodeBoilerplate/issues"
+  },
+  "homepage": "https://github.com/ThatAnonyG/NodeBoilerplate#readme",
+  "dependencies": {
+    "@types/ws": "^7.4.0",
+    "form-data": "^4.0.0",
+    "node-fetch": "^2.6.1",
+    "ws": "^7.4.4"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.33",
+    "@types/node-fetch": "^2.5.8",
+    "@typescript-eslint/eslint-plugin": "^4.13.0",
+    "@typescript-eslint/parser": "^4.13.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^7.18.0",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.7",
+    "ts-jest": "^26.4.4",
+    "tsconfig-paths": "^3.9.0",
+    "tscpaths": "0.0.9",
+    "typescript": "^4.2.3"
+  }
+}
