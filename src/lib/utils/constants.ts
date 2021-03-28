@@ -1,4 +1,5 @@
-import { IPresense } from "@/lib/structures/discord/Presense";
+import { PresenseStatus } from "@/lib/structures/discord/Presense";
+import { IActivity } from "../structures/discord/Activity";
 import { Channel } from "../structures/discord/Channel";
 import { User } from "../structures/discord/User";
 
@@ -14,7 +15,12 @@ export interface Payload {
 export interface ClientOptions {
   intents: Intents[];
   shardAmount?: number | "auto";
-  presense?: IPresense;
+  presense?: {
+    since: number | null;
+    activities: IActivity[] | null;
+    status: PresenseStatus | "invisible";
+    afk: boolean;
+  };
   readyTimeout?: number;
   retryLimits?: {
     rest?: number;

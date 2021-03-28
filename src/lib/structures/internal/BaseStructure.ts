@@ -1,23 +1,40 @@
 /* eslint-disable */
 import { Client } from "@/core/Client";
 import { GenericObj } from "@/lib/utils/constants";
+import { Channel } from "../discord/Channel";
+import { Guild } from "../discord/Guild";
+import { User } from "../discord/User";
 
 class BaseStructure {
+  public static cacheable: Cacheable = {
+    guild: Guild,
+    user: User,
+    channel: Channel,
+  };
+
   constructor(public client: Client) {}
 
   public _parseOptionalData(this: any, data: GenericObj): void {
-    const bucket = {};
-
     for (const key of Object.keys(data)) {
       if (typeof this[key] !== "undefined" && this[key] !== null) continue;
       if (typeof data[key] !== "undefined" && data[key] !== null)
-        (bucket as any)[key] = data[key];
-      continue;
+        this[key] = data[key];
     }
-
-    const keys = Object.keys(bucket);
-    if (keys.length) for (const key of keys) this[key] = (bucket as any)[key];
   }
+
+  public static cacheAdd<K extends keyof Cacheable>(
+    client: Client,
+    cacheType: K,
+    data: GenericObj
+  ) {
+    return new this.cacheable[cacheType](client, data as any);
+  }
+}
+
+interface Cacheable {
+  guild: typeof Guild;
+  user: typeof User;
+  channel: typeof Channel;
 }
 
 export { BaseStructure };

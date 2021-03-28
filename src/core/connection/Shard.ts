@@ -256,8 +256,8 @@ Remaining: ${this.ratelimit.remaining}`
         token: this.client.token,
         properties: {
           $os: process.platform,
-          $browser: "packageName",
-          $device: "packageName",
+          $browser: "evocord",
+          $device: "evocord",
         },
         shards: [this.id, this.client.options.shardAmount],
         intents: this.client.options.intents.reduce((acc, val) => acc + val, 0),

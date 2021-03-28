@@ -2,7 +2,6 @@
   "name": "@evocord/next",
   "version": "1.0.0",
   "description": "A modular discord API wrapper",
-  "main": "dist/bundle.js",
   "jest": {
     "roots": [
       "<rootDir>/tests"
@@ -19,14 +18,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ThatAnonyG/NodeBoilerplate.git"
+    "url": "git+https://github.com/evocord/core.git"
   },
   "author": "ThatAnonyG",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ThatAnonyG/NodeBoilerplate/issues"
+    "url": "https://github.com/evocord/next/issues"
   },
-  "homepage": "https://github.com/ThatAnonyG/NodeBoilerplate#readme",
+  "homepage": "https://github.com/evocord/core#readme",
   "dependencies": {
     "@types/ws": "^7.4.0",
     "form-data": "^4.0.0",
