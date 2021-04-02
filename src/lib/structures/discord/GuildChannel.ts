@@ -1,11 +1,25 @@
 import { Client } from "@/core/Client";
-import { BaseStructure } from "../internal/BaseStructure";
-import { Guild } from "./Guild";
+import { Channel, IChannnel } from "./Channel";
 
-export class GuildChannel extends BaseStructure {
-  public guild: Guild;
+export interface IGuildChannel extends IChannnel {
+  guildId: string;
+  position: number;
+  permissionOverwrites: [];
+  name: string;
+}
 
-  constructor(client: Client) {
-    super(client);
+export class GuildChannel extends Channel implements IGuildChannel {
+  public guildId: string;
+  public position: number;
+  public permissionOverwrites;
+  public name: string;
+
+  constructor(client: Client, data: IGuildChannel) {
+    super(client, { id: data.id, type: data.type });
+
+    this.guildId = data.guildId;
+    this.position = data.position;
+    this.permissionOverwrites = data.permissionOverwrites;
+    this.name = data.name;
   }
 }

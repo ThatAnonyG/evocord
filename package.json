@@ -1,6 +1,6 @@
 {
-  "name": "@evocord/next",
-  "version": "1.0.0",
+  "name": "@evocord/core",
+  "version": "1.0.0-dev",
   "description": "A modular discord API wrapper",
   "jest": {
     "roots": [
@@ -30,6 +30,7 @@
     "@types/ws": "^7.4.0",
     "form-data": "^4.0.0",
     "node-fetch": "^2.6.1",
+    "package.json": "^2.0.1",
     "ws": "^7.4.4"
   },
   "devDependencies": {

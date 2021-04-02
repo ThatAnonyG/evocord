@@ -27,6 +27,8 @@ export class Channel extends BaseStructure implements IChannnel {
 
     this.id = data.id;
     this.type = data.type;
+
+    if (this._cache) BaseStructure.cacheAdd(client, "channel", this);
   }
 
   public toString(): string {

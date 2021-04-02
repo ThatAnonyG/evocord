@@ -6,13 +6,7 @@ import { Guild } from "../discord/Guild";
 import { User } from "../discord/User";
 
 class BaseStructure {
-  public static cacheable: Cacheable = {
-    guild: Guild,
-    user: User,
-    channel: Channel,
-  };
-
-  constructor(public client: Client) {}
+  constructor(public client: Client, protected _cache = true) {}
 
   public _parseOptionalData(this: any, data: GenericObj): void {
     for (const key of Object.keys(data)) {
@@ -25,16 +19,16 @@ class BaseStructure {
   public static cacheAdd<K extends keyof Cacheable>(
     client: Client,
     cacheType: K,
-    data: GenericObj
+    data: Cacheable[K]
   ) {
-    return new this.cacheable[cacheType](client, data as any);
+    return data;
   }
 }
 
 interface Cacheable {
-  guild: typeof Guild;
-  user: typeof User;
-  channel: typeof Channel;
+  guild: Guild;
+  user: User;
+  channel: Channel;
 }
 
 export { BaseStructure };

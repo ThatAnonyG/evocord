@@ -43,5 +43,6 @@ export class Template extends BaseStructure implements ITemplate {
     this.updatedAt = data.updatedAt;
     this.sourceGuildId = data.sourceGuildId;
     this.serializedSourceGuild = new Guild();
+    this.isDirty = data.isDirty;
   }
 }
